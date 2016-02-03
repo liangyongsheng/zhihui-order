@@ -21,7 +21,9 @@ public class OrderPriceModel {
 	private long orderId;
 	private Date endOfday;
 	private Double price;
-	private Timestamp createTime;
+	private Integer createOprtId;
+	private Timestamp lastReviseTime;
+	private Integer lastReviseOprtId;
 	private String remark;
 
 	public long getId() {
@@ -56,12 +58,28 @@ public class OrderPriceModel {
 		this.price = price;
 	}
 
-	public Timestamp getCreateTime() {
-		return createTime;
+	public Integer getCreateOprtId() {
+		return createOprtId;
 	}
 
-	public void setCreateTime(Timestamp createTime) {
-		this.createTime = createTime;
+	public void setCreateOprtId(Integer createOprtId) {
+		this.createOprtId = createOprtId;
+	}
+
+	public Timestamp getLastReviseTime() {
+		return lastReviseTime;
+	}
+
+	public void setLastReviseTime(Timestamp lastReviseTime) {
+		this.lastReviseTime = lastReviseTime;
+	}
+
+	public Integer getLastReviseOprtId() {
+		return lastReviseOprtId;
+	}
+
+	public void setLastReviseOprtId(Integer lastReviseOprtId) {
+		this.lastReviseOprtId = lastReviseOprtId;
 	}
 
 	public String getRemark() {

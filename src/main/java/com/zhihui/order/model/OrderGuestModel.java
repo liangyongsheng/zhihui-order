@@ -21,6 +21,9 @@ public class OrderGuestModel {
 	private String contactName;
 	private String contactMobile;
 	private Timestamp createTime;
+	private Integer createOprtId;
+	private Timestamp lastReviseTime;
+	private Integer lastReviseOprtId;
 	private String remark;
 
 	public long getId() {
@@ -63,6 +66,30 @@ public class OrderGuestModel {
 		this.createTime = createTime;
 	}
 
+	public Integer getCreateOprtId() {
+		return createOprtId;
+	}
+
+	public void setCreateOprtId(Integer createOprtId) {
+		this.createOprtId = createOprtId;
+	}
+
+	public Timestamp getLastReviseTime() {
+		return lastReviseTime;
+	}
+
+	public void setLastReviseTime(Timestamp lastReviseTime) {
+		this.lastReviseTime = lastReviseTime;
+	}
+
+	public Integer getLastReviseOprtId() {
+		return lastReviseOprtId;
+	}
+
+	public void setLastReviseOprtId(Integer lastReviseOprtId) {
+		this.lastReviseOprtId = lastReviseOprtId;
+	}
+
 	public String getRemark() {
 		return remark;
 	}
@@ -70,4 +97,5 @@ public class OrderGuestModel {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
 }
