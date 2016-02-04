@@ -57,6 +57,11 @@
 	</bean>
 
 	<!-- Aspect -->
-	<!-- <bean id="transactionAspect" class="com.zhihui.core.aop.TransactionAspect" /> <aop:config> <aop:aspect ref="transactionAspect" order="1"> <aop:pointcut id="transactionPointcut" expression="execution(* com.zhihui.order.api.bo.*AddBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*UpdateBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*UseBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*DeleteBo.doBusiness(..))" /> <aop:around method="Around" pointcut-ref="transactionPointcut" 
-		arg-names="proceedingJoinPoint" /> </aop:aspect> </aop:config> -->
+	<bean id="transactionAspect" class="com.zhihui.core.aop.TransactionAspect" />
+	<aop:config>
+		<aop:aspect ref="transactionAspect" order="1">
+			<aop:pointcut id="transactionPointcut" expression="execution(* com.zhihui.order.api.bo.*AddBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*UpdateBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*UseBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*DeleteBo.doBusiness(..))" />
+			<aop:around method="Around" pointcut-ref="transactionPointcut" arg-names="proceedingJoinPoint" />
+		</aop:aspect>
+	</aop:config>
 </beans>

@@ -39,7 +39,7 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 	private Integer chainId;
 	private Long mebId;
 	private Integer roomTypeId;
-	private Integer amount;
+	private Integer num;
 
 	@XmlJavaTypeAdapter(value = XmlStr2DateAdapter.class)
 	@JsonSerialize(using = JsonStr2DateSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
@@ -50,6 +50,11 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 	@JsonSerialize(using = JsonStr2DateSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
 	@JsonDeserialize(using = JsonStr2DateDeserializer.class)
 	private Date depEndOfDay;
+
+	@XmlJavaTypeAdapter(value = XmlStr2DatetimeAdapter.class)
+	@JsonSerialize(using = JsonStr2DatetimeSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
+	@JsonDeserialize(using = JsonStr2DatetimeDeserializer.class)
+	private Date reserveTime;
 
 	@XmlJavaTypeAdapter(value = XmlStr2DatetimeAdapter.class)
 	@JsonSerialize(using = JsonStr2DatetimeSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
@@ -100,12 +105,12 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 		this.roomTypeId = roomTypeId;
 	}
 
-	public Integer getAmount() {
-		return amount;
+	public Integer getNum() {
+		return num;
 	}
 
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setNum(Integer num) {
+		this.num = num;
 	}
 
 	public Date getArrEndOfDay() {
@@ -122,6 +127,14 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 
 	public void setDepEndOfDay(Date depEndOfDay) {
 		this.depEndOfDay = depEndOfDay;
+	}
+
+	public Date getReserveTime() {
+		return reserveTime;
+	}
+
+	public void setReserveTime(Date reserveTime) {
+		this.reserveTime = reserveTime;
 	}
 
 	public Date getEarlyArrTime() {
@@ -211,8 +224,8 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 		if (this.roomTypeId == null || this.roomTypeId <= 0)
 			throw new CheckIllicitValueException("field: roomTypeId, value is illicit");
 
-		if (this.amount == null || this.amount <= 0)
-			throw new CheckIllicitValueException("field: amount, value is illicit");
+		if (this.num == null || this.num <= 0)
+			throw new CheckIllicitValueException("field: num, value is illicit");
 
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -221,7 +234,7 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 		} catch (Throwable e) {
 			throw new CheckIllicitValueException("field: arrEndOfDay, value is illicit");
 		}
-		if (this.depEndOfDay != null || this.arrEndOfDay.getTime() > this.depEndOfDay.getTime())
+		if (this.depEndOfDay == null || this.arrEndOfDay.getTime() > this.depEndOfDay.getTime())
 			throw new CheckIllicitValueException("field: arrEndOfDay, value is illicit");
 
 		if (this.depEndOfDay == null)

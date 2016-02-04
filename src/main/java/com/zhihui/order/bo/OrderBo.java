@@ -4,11 +4,13 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.zhihui.core.hibernate.DaoBase;
 import com.zhihui.order.dao.OrderDao;
 import com.zhihui.order.model.OrderModel;
 
+@Service
 public class OrderBo extends BoBase {
 	@Autowired
 	private OrderDao orderDao;
@@ -30,6 +32,13 @@ public class OrderBo extends BoBase {
 		if (orderModel.getLastReviseOprtId() == null)
 			orderModel.setLastReviseOprtId(orderModel.getCreateOprtId());
 		this.orderDao.add(orderModel);
+		return orderModel;
+	}
+
+	public OrderModel update(OrderModel orderModel) {
+		if (orderModel.getLastReviseTime() == null)
+			orderModel.setLastReviseTime(new Timestamp((new Date()).getTime()));
+		this.orderDao.update(orderModel);
 		return orderModel;
 	}
 }

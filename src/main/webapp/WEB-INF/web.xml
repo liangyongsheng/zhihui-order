@@ -21,6 +21,7 @@
 		<param-value>
 			classpath:context.cfg.xml,
 			classpath:mysql.connection.cfg.xml,
+			classpath:order.partner.service.cfg.xml,
 			classpath:*.api.cfg.xml
 		</param-value>
 	</context-param>

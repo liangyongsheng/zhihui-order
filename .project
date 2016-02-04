@@ -5,6 +5,9 @@
 	<projects>
 		<project>zhihui-core</project>
 		<project>zhihui-order-plateno</project>
+		<project>zhihui-order-dao</project>
+		<project>zhihui-order-model</project>
+		<project>zhihui-order-partner-plateno</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
