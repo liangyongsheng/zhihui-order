@@ -105,8 +105,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/zhihui-core"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/zhihui-order-model"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/zhihui-order-dao"/>
 	<classpathentry kind="lib" path="C:/eclipse/plugins/javax.xml.rpc_1.1.0.v201209140446/lib/jaxrpc.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
@@ -133,5 +131,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/zhihui-order-base"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

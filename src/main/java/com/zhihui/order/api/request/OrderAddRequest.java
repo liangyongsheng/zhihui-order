@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -70,7 +72,11 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 	private Integer sellerId;
 	private String message;
 	private String remark;
+	@XmlElementWrapper(name = "orderGuests")
+	@XmlElement(name = "orderGuest")
 	private List<OrderGuest> orderGuests;
+	@XmlElementWrapper(name = "orderPrices")
+	@XmlElement(name = "orderPrice")
 	private List<OrderPrice> orderPrices;
 
 	public Integer getPartnerId() {

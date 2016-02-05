@@ -17,6 +17,7 @@ import javax.xml.bind.JAXBContext;
 
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.junit.Test;
 
 import com.zhihui.core.util.MyAlgorithmUtils;
 import com.zhihui.order.api.entity.OrderGuest;
@@ -25,7 +26,8 @@ import com.zhihui.order.api.request.OrderAddRequest;
 
 public class TestOrderAddRequest {
 
-	public static void main(String[] args) {
+	@Test
+	public void doTest() {
 		String ct = MediaType.APPLICATION_JSON;
 		String at = MediaType.APPLICATION_JSON;
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");

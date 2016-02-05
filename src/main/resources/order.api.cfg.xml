@@ -4,5 +4,15 @@
 	http://www.springframework.org/schema/util
 	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 	<!---->
+	<bean id="brand.index.get" class="com.zhihui.order.api.bo.BrandIndexGetBo"></bean>
+	<!---->
+	<bean id="city.index.get" class="com.zhihui.order.api.bo.CityIndexGetBo"></bean>
+	<!---->
+	<bean id="chain.get" class="com.zhihui.order.api.bo.ChainGetBo"></bean>
+	<!---->
+	<bean id="room.type.index.get" class="com.zhihui.order.api.bo.RoomTypeIndexGetBo"></bean>
+	<!---->
+	<bean id="room.rate.get" class="com.zhihui.order.api.bo.RoomRateGetBo"></bean>
+	<!---->
 	<bean id="order.add" class="com.zhihui.order.api.bo.OrderAddBo"></bean>
 </beans>
