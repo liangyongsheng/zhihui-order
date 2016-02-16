@@ -30,7 +30,7 @@ public class TestOrderAddRequest {
 	public void doTest() {
 		String ct = MediaType.APPLICATION_JSON;
 		String at = MediaType.APPLICATION_JSON;
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String postData = "";
 
 		try {
@@ -44,9 +44,9 @@ public class TestOrderAddRequest {
 			t.setChainId(4);
 			t.setRoomTypeId(3);
 			t.setMebId(1L);
-			t.setNum(1);
-			t.setArrEndOfDay(new Date(df.parse(df.format(new Date())).getTime() + 1 * 24 * 60 * 60 * 1000));
-			t.setDepEndOfDay(new Date(df.parse(df.format(new Date())).getTime() + 2 * 24 * 60 * 60 * 1000));
+			t.setNum(2);
+			t.setArrEndOfDay(new Date(sdf.parse(sdf.format(new Date())).getTime() + 1 * 24 * 60 * 60 * 1000));
+			t.setDepEndOfDay(new Date(sdf.parse(sdf.format(new Date())).getTime() + 2 * 24 * 60 * 60 * 1000));
 			// t.setReserveTime(null);
 			// t.setEarlyArrTime(null);
 			// t.setLastArrTime(null);
@@ -62,8 +62,8 @@ public class TestOrderAddRequest {
 			t.setOrderGuests(guests);
 			// 价格
 			OrderPrice orderPrice = new OrderPrice();
-			orderPrice.setEndOfDay(new Date(df.parse(df.format(new Date())).getTime() + 1 * 24 * 60 * 60 * 1000));
-			orderPrice.setPrice(127D);
+			orderPrice.setEndOfDay(new Date(sdf.parse(sdf.format(new Date())).getTime() + 1 * 24 * 60 * 60 * 1000));
+			orderPrice.setPrice(110d);
 			prices.add(orderPrice);
 			t.setOrderPrices(prices);
 
@@ -90,8 +90,8 @@ public class TestOrderAddRequest {
 			connection.setRequestProperty("Content-type", ct);
 			connection.setRequestProperty("Accept", at);
 			connection.setRequestProperty("Sign", sign);
-			connection.setConnectTimeout(30 * 1000);
-			connection.setReadTimeout(60 * 1000);
+			connection.setConnectTimeout(5 * 60 * 1000);
+			connection.setReadTimeout(5 * 60 * 1000);
 			connection.setUseCaches(false);
 			connection.setDoInput(true);
 

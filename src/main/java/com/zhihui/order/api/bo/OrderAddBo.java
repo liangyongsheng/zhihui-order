@@ -117,9 +117,11 @@ public class OrderAddBo extends ApiBo<OrderAddRequest> {
 
 			// 实时下单
 			String rs = partnerService.addBook(chainModel, roomTypeModel, orderModel, orderGuestModels, orderPriceModels);
-			if (rs == null)
+			if (rs == null) {
+				orderModel.setFlag(0);
+				this.orderBo.update(orderModel);
 				throw new BusinessException("result is null");
-			else {
+			} else {
 				orderModel.setOuterOrderSn(rs);
 				orderModel.setFlag(2);// 已下单
 				this.orderBo.update(orderModel);
