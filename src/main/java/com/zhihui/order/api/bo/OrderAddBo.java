@@ -81,6 +81,7 @@ public class OrderAddBo extends ApiBo<OrderAddRequest> {
 			// orderModel.setOuterOrderSn(null);
 			orderModel.setOuterOrderName(partnerService.getDesc());
 			orderModel.setMessage(this.apiRequest.getMessage());
+			// 0、影子订单；1、下单中；2、已下单；3、取消中；4、已取消；5、NOSHOW；6、入住；7、离店
 			orderModel.setFlag(1);// 下单中
 			orderModel.setCreateOprtId(this.apiRequest.getOprtId());
 			orderModel.setLastReviseTime(new Timestamp((new Date()).getTime()));
@@ -116,15 +117,16 @@ public class OrderAddBo extends ApiBo<OrderAddRequest> {
 			}
 
 			// 实时下单
-			String rs = partnerService.addBook(chainModel, roomTypeModel, orderModel, orderGuestModels, orderPriceModels);
-			if (rs == null) {
-				orderModel.setFlag(0);
-				this.orderBo.update(orderModel);
-				throw new BusinessException("result is null");
-			} else {
-				orderModel.setOuterOrderSn(rs);
+			try {
+				String orderNo = partnerService.addBook(chainModel, roomTypeModel, orderModel, orderGuestModels, orderPriceModels);
+				orderModel.setOuterOrderSn(orderNo);
 				orderModel.setFlag(2);// 已下单
 				this.orderBo.update(orderModel);
+			} catch (Throwable pe) {
+				orderModel.setInnRemark(partnerService.getErrMsg(1000));
+				orderModel.setFlag(0);
+				this.orderBo.update(orderModel);
+				throw pe;
 			}
 
 			rsp.setOrderId(orderModel.getOrderId());

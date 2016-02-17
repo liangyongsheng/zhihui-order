@@ -15,4 +15,6 @@
 	<bean id="room.rate.get" class="com.zhihui.order.api.bo.RoomRateGetBo"></bean>
 	<!---->
 	<bean id="order.add" class="com.zhihui.order.api.bo.OrderAddBo"></bean>
+	<bean id="order.get" class="com.zhihui.order.api.bo.OrderGetBo"></bean>
+	<bean id="order.cancel" class="com.zhihui.order.api.bo.OrderCancelBo"></bean>
 </beans>

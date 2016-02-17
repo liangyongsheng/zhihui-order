@@ -22,9 +22,9 @@ import org.junit.Test;
 import com.zhihui.core.util.MyAlgorithmUtils;
 import com.zhihui.order.api.entity.OrderGuest;
 import com.zhihui.order.api.entity.OrderPrice;
-import com.zhihui.order.api.request.OrderAddRequest;
+import com.zhihui.order.api.request.OrderCancelRequest;
 
-public class TestOrderAddRequest {
+public class TestOrderCancelRequest {
 
 	@Test
 	public void doTest() {
@@ -34,39 +34,14 @@ public class TestOrderAddRequest {
 		String postData = "";
 
 		try {
-			OrderAddRequest t = new OrderAddRequest();
+			OrderCancelRequest t = new OrderCancelRequest();
 			List<OrderGuest> guests = new ArrayList<OrderGuest>();
 			List<OrderPrice> prices = new ArrayList<OrderPrice>();
-			t.setMethod("order.add");
+			t.setMethod("order.cancel");
 			t.setTimestamp(new Date());
 			t.setOprtId(1);
 			t.setOprtSecret("notsetyet");
-			t.setPartnerId(1);
-			t.setChainId(4);
-			t.setRoomTypeId(3);
-			t.setMebId(1L);
-			t.setNum(2);
-			t.setArrEndOfDay(new Date(sdf.parse(sdf.format(new Date())).getTime() + 1 * 24 * 60 * 60 * 1000));
-			t.setDepEndOfDay(new Date(sdf.parse(sdf.format(new Date())).getTime() + 2 * 24 * 60 * 60 * 1000));
-			// t.setReserveTime(null);
-			// t.setEarlyArrTime(null);
-			// t.setLastArrTime(null);
-			t.setChannelSellerId(1);
-			t.setSellerId(1);
-			t.setMessage("tttt");
-			t.setRemark("remark");
-			// 用户
-			OrderGuest orderGuest = new OrderGuest();
-			orderGuest.setContactMobile("1238943894394");
-			orderGuest.setContactName("LLL没");
-			guests.add(orderGuest);
-			t.setOrderGuests(guests);
-			// 价格
-			OrderPrice orderPrice = new OrderPrice();
-			orderPrice.setEndOfDay(new Date(sdf.parse(sdf.format(new Date())).getTime() + 1 * 24 * 60 * 60 * 1000));
-			orderPrice.setPrice(110d);
-			prices.add(orderPrice);
-			t.setOrderPrices(prices);
+			t.setOrderId(1L);
 
 			// for XML
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
