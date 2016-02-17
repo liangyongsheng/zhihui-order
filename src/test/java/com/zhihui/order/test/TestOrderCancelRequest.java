@@ -8,9 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
@@ -20,8 +18,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
 import com.zhihui.core.util.MyAlgorithmUtils;
-import com.zhihui.order.api.entity.OrderGuest;
-import com.zhihui.order.api.entity.OrderPrice;
 import com.zhihui.order.api.request.OrderCancelRequest;
 
 public class TestOrderCancelRequest {
@@ -35,8 +31,6 @@ public class TestOrderCancelRequest {
 
 		try {
 			OrderCancelRequest t = new OrderCancelRequest();
-			List<OrderGuest> guests = new ArrayList<OrderGuest>();
-			List<OrderPrice> prices = new ArrayList<OrderPrice>();
 			t.setMethod("order.cancel");
 			t.setTimestamp(new Date());
 			t.setOprtId(1);
