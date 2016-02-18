@@ -69,13 +69,16 @@ public class OrderAddBo extends ApiBo<OrderAddRequest> {
 			orderModel.setPartnerId(this.apiRequest.getPartnerId());
 			orderModel.setChainId(this.apiRequest.getChainId());
 			orderModel.setMebId(this.apiRequest.getMebId());
+			orderModel.setMebName(this.apiRequest.getMebName());
+			orderModel.setMebGender(this.apiRequest.getMebGender());
+			orderModel.setMebMobile(this.apiRequest.getMebMobile());
 			orderModel.setRoomTypeId(this.apiRequest.getRoomTypeId());
 			orderModel.setNum(this.apiRequest.getNum());
 			orderModel.setArrEndOfDay(new java.sql.Date(this.apiRequest.getArrEndOfDay().getTime()));
 			orderModel.setDepEndOfDay(new java.sql.Date(this.apiRequest.getDepEndOfDay().getTime()));
 			// orderModel.setReserveTime(null);
-			// orderModel.setEarlyArrTime(null);
-			// orderModel.setLastArrTime(null);
+			orderModel.setEarlyArrTime(this.apiRequest.getEarlyArrTime() == null ? null : new Timestamp(this.apiRequest.getEarlyArrTime().getTime()));
+			orderModel.setLastArrTime(this.apiRequest.getLastArrTime() == null ? null : new Timestamp(this.apiRequest.getLastArrTime().getTime()));
 			orderModel.setChannelSellerId(this.apiRequest.getChannelSellerId());
 			orderModel.setSellerId(this.apiRequest.getSellerId());
 			// orderModel.setOuterOrderSn(null);
@@ -96,6 +99,7 @@ public class OrderAddBo extends ApiBo<OrderAddRequest> {
 				orderGuestModel.setOrderId(orderModel.getOrderId());
 				orderGuestModel.setContactName(e.getContactName());
 				orderGuestModel.setContactMobile(e.getContactMobile());
+				orderGuestModel.setRemark(e.getRemark());
 				orderGuestModel.setCreateOprtId(this.apiRequest.getOprtId());
 				orderGuestModel.setLastReviseTime(new Timestamp((new Date()).getTime()));
 				orderGuestModel.setLastReviseOprtId(this.apiRequest.getOprtId());
@@ -109,6 +113,7 @@ public class OrderAddBo extends ApiBo<OrderAddRequest> {
 				orderPriceModel.setOrderId(orderModel.getOrderId());
 				orderPriceModel.setEndOfday(new java.sql.Date(e.getEndOfDay().getTime()));
 				orderPriceModel.setPrice(e.getPrice());
+				orderPriceModel.setRemark(e.getRemark());
 				orderPriceModel.setCreateOprtId(this.apiRequest.getOprtId());
 				orderPriceModel.setLastReviseTime(new Timestamp((new Date()).getTime()));
 				orderPriceModel.setLastReviseOprtId(this.apiRequest.getOprtId());

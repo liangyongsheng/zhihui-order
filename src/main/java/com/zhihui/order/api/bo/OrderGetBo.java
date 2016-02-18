@@ -66,6 +66,9 @@ public class OrderGetBo extends ApiBo<OrderGetRequest> {
 				order.setLastReviseOprtId(e.getLastReviseOprtId());
 				order.setLastReviseTime(e.getLastReviseTime() == null ? null : new Date(e.getLastReviseTime().getTime()));
 				order.setMebId(e.getMebId());
+				order.setMebName(e.getMebName());
+				order.setMebGender(e.getMebGender());
+				order.setMebMobile(e.getMebMobile());
 				order.setMessage(e.getMessage());
 				order.setOrderGuests(null); // 多个时清0
 				order.setOrderId(e.getOrderId());
@@ -84,16 +87,21 @@ public class OrderGetBo extends ApiBo<OrderGetRequest> {
 					List<OrderGuestModel> orderGuestModels = this.orderGuestBo.getByOrderId(this.apiRequest.getOrderId());
 					for (OrderGuestModel g : orderGuestModels) {
 						OrderGuest orderGuest = new OrderGuest();
+						orderGuest.setOrderGuestId(g.getOrderGuestId());
 						orderGuest.setContactName(g.getContactName());
+						orderGuest.setContactGender(g.getContactGender());
 						orderGuest.setContactMobile(g.getContactMobile());
+						orderGuest.setRemark(g.getRemark());
 						order.getOrderGuests().add(orderGuest);
 					}
 
 					List<OrderPriceModel> orderPriceModels = this.orderPriceBo.getByOrderId(this.apiRequest.getOrderId());
 					for (OrderPriceModel p : orderPriceModels) {
 						OrderPrice orderPrice = new OrderPrice();
+						orderPrice.setOrderPriceId(p.getOrderPriceId());
 						orderPrice.setEndOfDay(p.getEndOfday() == null ? null : new Date(p.getEndOfday().getTime()));
 						orderPrice.setPrice(p.getPrice());
+						orderPrice.setRemark(p.getRemark());
 						order.getOrderPrices().add(orderPrice);
 					}
 				}

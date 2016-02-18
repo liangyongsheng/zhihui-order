@@ -19,12 +19,14 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.zhihui.core.api.ApiRequest;
 import com.zhihui.core.exception.AsignException;
+import com.zhihui.core.exception.CheckEmptyException;
 import com.zhihui.core.exception.CheckException;
 import com.zhihui.core.exception.CheckIllicitValueException;
 import com.zhihui.core.jsonmapper.JsonStr2DateDeserializer;
 import com.zhihui.core.jsonmapper.JsonStr2DateSerializer;
 import com.zhihui.core.jsonmapper.JsonStr2DatetimeDeserializer;
 import com.zhihui.core.jsonmapper.JsonStr2DatetimeSerializer;
+import com.zhihui.core.util.MyStringUtils;
 import com.zhihui.core.xmladapter.XmlStr2DateAdapter;
 import com.zhihui.core.xmladapter.XmlStr2DatetimeAdapter;
 import com.zhihui.order.api.entity.OrderGuest;
@@ -40,6 +42,9 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 	private Integer partnerId;
 	private Integer chainId;
 	private Long mebId;
+	private String mebName;
+	private Integer mebGender;
+	private String mebMobile;
 	private Integer roomTypeId;
 	private Integer num;
 
@@ -52,11 +57,6 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 	@JsonSerialize(using = JsonStr2DateSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
 	@JsonDeserialize(using = JsonStr2DateDeserializer.class)
 	private Date depEndOfDay;
-
-	@XmlJavaTypeAdapter(value = XmlStr2DatetimeAdapter.class)
-	@JsonSerialize(using = JsonStr2DatetimeSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
-	@JsonDeserialize(using = JsonStr2DatetimeDeserializer.class)
-	private Date reserveTime;
 
 	@XmlJavaTypeAdapter(value = XmlStr2DatetimeAdapter.class)
 	@JsonSerialize(using = JsonStr2DatetimeSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
@@ -103,6 +103,30 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 		this.mebId = mebId;
 	}
 
+	public String getMebName() {
+		return mebName;
+	}
+
+	public void setMebName(String mebName) {
+		this.mebName = mebName;
+	}
+
+	public Integer getMebGender() {
+		return mebGender;
+	}
+
+	public void setMebGender(Integer mebGender) {
+		this.mebGender = mebGender;
+	}
+
+	public String getMebMobile() {
+		return mebMobile;
+	}
+
+	public void setMebMobile(String mebMobile) {
+		this.mebMobile = mebMobile;
+	}
+
 	public Integer getRoomTypeId() {
 		return roomTypeId;
 	}
@@ -133,14 +157,6 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 
 	public void setDepEndOfDay(Date depEndOfDay) {
 		this.depEndOfDay = depEndOfDay;
-	}
-
-	public Date getReserveTime() {
-		return reserveTime;
-	}
-
-	public void setReserveTime(Date reserveTime) {
-		this.reserveTime = reserveTime;
 	}
 
 	public Date getEarlyArrTime() {
@@ -227,6 +243,15 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 		if (this.mebId == null || this.mebId <= 0)
 			throw new CheckIllicitValueException("field: mebId, value is illicit");
 
+		if (MyStringUtils.isEmpty(this.mebName))
+			throw new CheckEmptyException("field: mebName, value is empty");
+
+		if (this.mebGender == null || this.mebGender <= 0 || this.mebGender >= 4)
+			throw new CheckIllicitValueException("field: mebGender, value is illicit");
+
+		if (MyStringUtils.isEmpty(this.mebMobile))
+			throw new CheckEmptyException("field: mebMobile, value is empty");
+
 		if (this.roomTypeId == null || this.roomTypeId <= 0)
 			throw new CheckIllicitValueException("field: roomTypeId, value is illicit");
 
@@ -249,6 +274,12 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 		long day = (this.depEndOfDay.getTime() - this.arrEndOfDay.getTime()) / (1000 * 24 * 60 * 60);
 		if (day > 15)
 			throw new CheckIllicitValueException("the span between arrEndOfDay and depEndOfDay is larger then 15 days");
+
+		if (this.earlyArrTime != null && this.earlyArrTime.getTime() < this.arrEndOfDay.getTime())
+			throw new CheckIllicitValueException("field: earlyArrTime, value is illicit");
+
+		if (this.lastArrTime != null && this.lastArrTime.getTime() > this.arrEndOfDay.getTime() + 24 * 60 * 60 * 1000 + 4 * 60 * 60 * 1000)
+			throw new CheckIllicitValueException("field: lastArrTime, value is illicit");
 
 		if (this.orderGuests == null || this.orderGuests.size() <= 0)
 			throw new CheckIllicitValueException("field: orderGuests, value is illicit");

@@ -23,11 +23,21 @@ import com.zhihui.core.xmladapter.XmlStr2DateAdapter;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonAutoDetect(creatorVisibility = Visibility.NONE, fieldVisibility = Visibility.ANY, getterVisibility = Visibility.NONE, isGetterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE)
 public class OrderPrice {
+	private Long orderPriceId;
 	@XmlJavaTypeAdapter(value = XmlStr2DateAdapter.class)
 	@JsonSerialize(using = JsonStr2DateSerializer.class, include = JsonSerialize.Inclusion.NON_NULL)
 	@JsonDeserialize(using = JsonStr2DateDeserializer.class)
 	private Date endOfDay;
 	private Double price;
+	private String remark;
+
+	public Long getOrderPriceId() {
+		return orderPriceId;
+	}
+
+	public void setOrderPriceId(Long orderPriceId) {
+		this.orderPriceId = orderPriceId;
+	}
 
 	public Date getEndOfDay() {
 		return endOfDay;
@@ -45,4 +55,11 @@ public class OrderPrice {
 		this.price = price;
 	}
 
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 }

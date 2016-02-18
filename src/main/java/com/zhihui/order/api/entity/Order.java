@@ -35,6 +35,9 @@ public class Order {
 	private String outerOrderName;
 	private Integer chainId;
 	private Long mebId;
+	private String mebName;
+	private Integer mebGender;
+	private String mebMobile;
 	private Integer roomTypeId;
 	private Integer num;
 	@XmlJavaTypeAdapter(value = XmlStr2DateAdapter.class)
@@ -137,6 +140,30 @@ public class Order {
 
 	public void setMebId(Long mebId) {
 		this.mebId = mebId;
+	}
+
+	public String getMebName() {
+		return mebName;
+	}
+
+	public void setMebName(String mebName) {
+		this.mebName = mebName;
+	}
+
+	public Integer getMebGender() {
+		return mebGender;
+	}
+
+	public void setMebGender(Integer mebGender) {
+		this.mebGender = mebGender;
+	}
+
+	public String getMebMobile() {
+		return mebMobile;
+	}
+
+	public void setMebMobile(String mebMobile) {
+		this.mebMobile = mebMobile;
 	}
 
 	public Integer getRoomTypeId() {
