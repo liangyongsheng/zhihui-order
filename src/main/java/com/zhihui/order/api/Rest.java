@@ -78,7 +78,7 @@ public class Rest {
 					break;
 				}
 			} else
-				throw new ApiNoMethodException("no such thethod");
+				throw new ApiNoMethodException("no such thethod.");
 
 			// transform the exception
 			try {
@@ -94,14 +94,18 @@ public class Rest {
 			return bo.getApiResponse();
 
 		} catch (Throwable e) {
+			Throwable rootExcep = e;
+			while (rootExcep.getCause() != null)
+				rootExcep = e.getCause();
+
 			ApiResponse arp = new ApiResponse();
 			arp.setCode("default");
-			arp.setMsg(e.getMessage());
-			if (e instanceof CoreException) {
-				CoreException ae = (CoreException) e;
+			arp.setMsg(rootExcep.getMessage());
+			if (rootExcep instanceof CoreException) {
+				CoreException ae = (CoreException) rootExcep;
 				arp.setCode(ae.getCode());
 				arp.setSubCode(ae.getSubCode());
-				arp.setSubMsg(e.getMessage());
+				arp.setSubMsg(rootExcep.getMessage());
 			}
 			return arp;
 		}

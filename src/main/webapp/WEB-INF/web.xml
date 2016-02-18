@@ -14,15 +14,16 @@
 	</context-param>
 	<context-param>
 		<param-name>log4jConfigLocation</param-name>
-		<param-value>classpath:log4j.properties</param-value>
+		<param-value>classpath:order.log4j.properties</param-value>
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:context.cfg.xml,
-			classpath:mysql.connection.cfg.xml,
-			classpath:order.partner.service.cfg.xml,
-			classpath:*.api.cfg.xml
+			classpath:order.api.cfg.xml,
+			classpath:order.aspect.cfg.xml,
+			classpath:order.context.cfg.xml,
+			classpath:order.mysql.connection.cfg.xml,
+			classpath:order.partner.service.cfg.xml
 		</param-value>
 	</context-param>
 	<listener>

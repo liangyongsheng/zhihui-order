@@ -43,6 +43,6 @@ public class OrderCancelRequest extends ApiRequest<OrderCancelResponse> {
 	@Override
 	public void checkApiParams() throws CheckException {
 		if (this.orderId == null || this.orderId <= 0)
-			throw new CheckIllicitValueException("field: orderId, value is illicit");
+			throw new CheckIllicitValueException("field: orderId, value is illicit.");
 	}
 }

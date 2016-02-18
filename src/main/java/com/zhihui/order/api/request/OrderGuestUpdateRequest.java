@@ -62,19 +62,19 @@ public class OrderGuestUpdateRequest extends ApiRequest<OrderGuestUpdateResponse
 	@Override
 	public void checkApiParams() throws CheckException {
 		if (this.orderId == null || this.orderId <= 0)
-			throw new CheckIllicitValueException("field: orderId, value is illicit");
+			throw new CheckIllicitValueException("field: orderId, value is illicit.");
 
 		if (this.orderGuests == null || this.orderGuests.size() <= 0)
-			throw new CheckIllicitValueException("field: orderGuests, value is illicit");
+			throw new CheckIllicitValueException("field: orderGuests, value is illicit.");
 		for (OrderGuest e : this.orderGuests) {
 			if (e.getOrderGuestId() != null && e.getOrderGuestId() <= 0)
-				throw new CheckIllicitValueException("field: orderGuestId, value is illicit");
+				throw new CheckIllicitValueException("field: orderGuestId, value is illicit.");
 			if (MyStringUtils.isEmpty(e.getContactName()))
-				throw new CheckEmptyException("field: contactName, value is empty");
+				throw new CheckEmptyException("field: contactName, value is empty.");
 			if (e.getContactGender() == null || e.getContactGender() <= 0 || e.getContactGender() >= 4)
-				throw new CheckIllicitValueException("field: contactGender, value is illicit");
+				throw new CheckIllicitValueException("field: contactGender, value is illicit.");
 			if (MyStringUtils.isEmpty(e.getContactMobile()))
-				throw new CheckEmptyException("field: contactMobile, value is empty");
+				throw new CheckEmptyException("field: contactMobile, value is empty.");
 		}
 	}
 }

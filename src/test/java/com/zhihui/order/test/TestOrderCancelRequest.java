@@ -34,7 +34,7 @@ public class TestOrderCancelRequest {
 			t.setMethod("order.cancel");
 			t.setTimestamp(new Date());
 			t.setOprtId(1);
-			t.setOprtSecret("notsetyet");
+			t.setOprtSecret("NOTSETYET");
 			t.setOrderId(1L);
 
 			// for XML

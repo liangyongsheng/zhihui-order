@@ -24,8 +24,8 @@ public class TestOrderGetRequest {
 
 	@Test
 	public void doTest() {
-		String ct = MediaType.APPLICATION_XML;
-		String at = MediaType.APPLICATION_XML;
+		String ct = MediaType.APPLICATION_JSON;
+		String at = MediaType.APPLICATION_JSON;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String postData = "";
 
@@ -34,7 +34,7 @@ public class TestOrderGetRequest {
 			t.setMethod("order.get");
 			t.setTimestamp(new Date());
 			t.setOprtId(1);
-			t.setOprtSecret("notsetyet");
+			t.setOprtSecret("NOTSETYEt");
 			t.setOrderId(1L);
 
 			// for XML

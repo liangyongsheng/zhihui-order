@@ -52,10 +52,10 @@ public class OrderGetRequest extends ApiRequest<OrderGetResponse> {
 	@Override
 	public void checkApiParams() throws CheckException {
 		if (this.orderId == null && this.mebId == null)
-			throw new CheckIllicitValueException("parameters are empty");
+			throw new CheckIllicitValueException("parameters are empty.");
 		if (this.orderId != null && this.orderId <= 0)
-			throw new CheckIllicitValueException("field: orderId, value is illicit");
+			throw new CheckIllicitValueException("field: orderId, value is illicit.");
 		if (this.mebId != null && this.mebId <= 0)
-			throw new CheckIllicitValueException("field: mebId, value is illicit");
+			throw new CheckIllicitValueException("field: mebId, value is illicit.");
 	}
 }

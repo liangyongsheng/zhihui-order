@@ -41,11 +41,14 @@ public class TestOrderAddRequest {
 			t.setMethod("order.add");
 			t.setTimestamp(new Date());
 			t.setOprtId(1);
-			t.setOprtSecret("notsetyet");
+			t.setOprtSecret("NOTSETYET");
 			t.setPartnerId(1);
 			t.setChainId(4);
 			t.setRoomTypeId(3);
 			t.setMebId(1L);
+			t.setMebName("阿三");
+			t.setMebGender(1);
+			t.setMebMobile("12456787890");
 			t.setNum(2);
 			t.setArrEndOfDay(new Date(sdf.parse(sdf.format(new Date())).getTime() + 1 * 24 * 60 * 60 * 1000));
 			t.setDepEndOfDay(new Date(sdf.parse(sdf.format(new Date())).getTime() + 2 * 24 * 60 * 60 * 1000));

@@ -235,56 +235,56 @@ public class OrderAddRequest extends ApiRequest<OrderAddResponse> {
 	@Override
 	public void checkApiParams() throws CheckException {
 		if (this.partnerId == null || this.partnerId <= 0)
-			throw new CheckIllicitValueException("field: partnerId, value is illicit");
+			throw new CheckIllicitValueException("field: partnerId, value is illicit.");
 
 		if (this.chainId == null || this.chainId <= 0)
-			throw new CheckIllicitValueException("field: chainId, value is illicit");
+			throw new CheckIllicitValueException("field: chainId, value is illicit.");
 
 		if (this.mebId == null || this.mebId <= 0)
-			throw new CheckIllicitValueException("field: mebId, value is illicit");
+			throw new CheckIllicitValueException("field: mebId, value is illicit.");
 
 		if (MyStringUtils.isEmpty(this.mebName))
-			throw new CheckEmptyException("field: mebName, value is empty");
+			throw new CheckEmptyException("field: mebName, value is empty.");
 
 		if (this.mebGender == null || this.mebGender <= 0 || this.mebGender >= 4)
-			throw new CheckIllicitValueException("field: mebGender, value is illicit");
+			throw new CheckIllicitValueException("field: mebGender, value is illicit.");
 
 		if (MyStringUtils.isEmpty(this.mebMobile))
-			throw new CheckEmptyException("field: mebMobile, value is empty");
+			throw new CheckEmptyException("field: mebMobile, value is empty.");
 
 		if (this.roomTypeId == null || this.roomTypeId <= 0)
-			throw new CheckIllicitValueException("field: roomTypeId, value is illicit");
+			throw new CheckIllicitValueException("field: roomTypeId, value is illicit.");
 
 		if (this.num == null || this.num <= 0)
-			throw new CheckIllicitValueException("field: num, value is illicit");
+			throw new CheckIllicitValueException("field: num, value is illicit.");
 
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			if (this.arrEndOfDay == null || this.arrEndOfDay.getTime() < df.parse(df.format(new Date())).getTime())
-				throw new CheckIllicitValueException("field: arrEndOfDay, value is illicit");
+				throw new CheckIllicitValueException("field: arrEndOfDay, value is illicit.");
 		} catch (Throwable e) {
-			throw new CheckIllicitValueException("field: arrEndOfDay, value is illicit");
+			throw new CheckIllicitValueException("field: arrEndOfDay, value is illicit.");
 		}
 		if (this.depEndOfDay == null || this.arrEndOfDay.getTime() > this.depEndOfDay.getTime())
-			throw new CheckIllicitValueException("field: arrEndOfDay, value is illicit");
+			throw new CheckIllicitValueException("field: arrEndOfDay, value is illicit.");
 
 		if (this.depEndOfDay == null)
-			throw new CheckIllicitValueException("field: depEndOfDay, value is illicit");
+			throw new CheckIllicitValueException("field: depEndOfDay, value is illicit.");
 
 		long day = (this.depEndOfDay.getTime() - this.arrEndOfDay.getTime()) / (1000 * 24 * 60 * 60);
 		if (day > 15)
-			throw new CheckIllicitValueException("the span between arrEndOfDay and depEndOfDay is larger then 15 days");
+			throw new CheckIllicitValueException("the span between arrEndOfDay and depEndOfDay is larger then 15 days.");
 
 		if (this.earlyArrTime != null && this.earlyArrTime.getTime() < this.arrEndOfDay.getTime())
-			throw new CheckIllicitValueException("field: earlyArrTime, value is illicit");
+			throw new CheckIllicitValueException("field: earlyArrTime, value is illicit.");
 
 		if (this.lastArrTime != null && this.lastArrTime.getTime() > this.arrEndOfDay.getTime() + 24 * 60 * 60 * 1000 + 4 * 60 * 60 * 1000)
-			throw new CheckIllicitValueException("field: lastArrTime, value is illicit");
+			throw new CheckIllicitValueException("field: lastArrTime, value is illicit.");
 
 		if (this.orderGuests == null || this.orderGuests.size() <= 0)
-			throw new CheckIllicitValueException("field: orderGuests, value is illicit");
+			throw new CheckIllicitValueException("field: orderGuests, value is illicit.");
 
 		if (this.orderPrices == null || this.orderPrices.size() <= 0)
-			throw new CheckIllicitValueException("field: orderPrices, value is illicit");
+			throw new CheckIllicitValueException("field: orderPrices, value is illicit.");
 	}
 }

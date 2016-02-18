@@ -39,7 +39,7 @@ public class OrderGuestUpdateBo extends ApiBo<OrderGuestUpdateRequest> {
 			// check the parameters
 			OrderModel orderModel = this.orderBo.getById(this.apiRequest.getOrderId());
 			if (orderModel == null)
-				throw new BusinessException("不存在些订单");
+				throw new BusinessException("不存在些订单。");
 
 			List<OrderGuestModel> addOrderGuestModels = new ArrayList<OrderGuestModel>();
 			List<OrderGuestModel> updateOrderGuestModels = new ArrayList<OrderGuestModel>();
@@ -52,9 +52,9 @@ public class OrderGuestUpdateBo extends ApiBo<OrderGuestUpdateRequest> {
 				} else {
 					orderGuestModel = this.orderGuestBo.getById(e.getOrderGuestId());
 					if (orderGuestModel == null)
-						throw new BusinessException("不存在此入住客人");
+						throw new BusinessException("不存在此入住客人。");
 					if (orderGuestModel.getOrderId() == this.apiRequest.getOrderId().longValue())
-						throw new BusinessException("此入住客人不属于此订单");
+						throw new BusinessException("此入住客人不属于此订单。");
 
 				}
 

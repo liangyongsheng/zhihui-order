@@ -43,6 +43,6 @@ public class OrderGuestGetRequest extends ApiRequest<OrderGuestGetResponse> {
 	@Override
 	public void checkApiParams() throws CheckException {
 		if (this.orderId != null && this.orderId <= 0)
-			throw new CheckIllicitValueException("field: orderId, value is illicit");
+			throw new CheckIllicitValueException("field: orderId, value is illicit.");
 	}
 }
