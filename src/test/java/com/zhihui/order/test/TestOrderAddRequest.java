@@ -28,7 +28,7 @@ public class TestOrderAddRequest {
 
 	@Test
 	public void doTest() {
-		String ct = MediaType.APPLICATION_XML;
+		String ct = MediaType.APPLICATION_JSON;
 		String at = MediaType.APPLICATION_JSON;
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

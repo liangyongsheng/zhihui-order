@@ -24,7 +24,7 @@ public class TestOrderCancelRequest {
 
 	@Test
 	public void doTest() {
-		String ct = MediaType.APPLICATION_JSON;
+		String ct = MediaType.APPLICATION_XML;
 		String at = MediaType.APPLICATION_JSON;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String postData = "";
