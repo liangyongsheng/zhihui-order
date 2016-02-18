@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="permissionAspect" class="com.zhihui.core.aop.PermissionAspect" />
+	<bean id="transactionAspect" class="com.zhihui.core.aop.TransactionAspect" />
+	<aop:config>
+		<aop:aspect ref="permissionAspect" order="1">
+			<aop:pointcut id="permissionPointcut" expression="execution(* com.zhihui.order.api.bo.*Bo.doBusiness(..))" />
+			<aop:before method="before" pointcut-ref="permissionPointcut" arg-names="joinPoint" />
+		</aop:aspect>
+		<aop:aspect ref="transactionAspect" order="999">
+			<aop:pointcut id="transactionPointcut" expression="execution(* com.zhihui.order.api.bo.*AddBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*UpdateBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*UseBo.doBusiness(..)) or execution(* com.zhihui.order.api.bo.*DeleteBo.doBusiness(..))" />
+			<aop:around method="around" pointcut-ref="transactionPointcut" arg-names="proceedingJoinPoint" />
+		</aop:aspect>
+	</aop:config>
+</beans>
