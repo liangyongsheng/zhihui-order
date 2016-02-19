@@ -7,6 +7,7 @@
 		<project>zhihui-order-plateno</project>
 		<project>zhihui-order-base</project>
 		<project>zhihui-order-partner-plateno</project>
+		<project>my-spring</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

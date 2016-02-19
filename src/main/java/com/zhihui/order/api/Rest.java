@@ -27,6 +27,7 @@ import com.zhihui.core.exception.CoreException;
 @Controller
 @Path("/order")
 public class Rest {
+
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String doGet() {

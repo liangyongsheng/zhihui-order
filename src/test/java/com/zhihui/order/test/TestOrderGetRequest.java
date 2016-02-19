@@ -34,7 +34,7 @@ public class TestOrderGetRequest {
 			t.setMethod("order.get");
 			t.setTimestamp(new Date());
 			t.setOprtId(1);
-			t.setOprtSecret("NOTSETYEt");
+			t.setOprtSecret("NOTSETYET");
 			t.setOrderId(1L);
 
 			// for XML
