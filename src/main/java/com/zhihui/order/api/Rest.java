@@ -23,6 +23,7 @@ import com.zhihui.core.api.ApiNoMethodException;
 import com.zhihui.core.api.ApiResponse;
 import com.zhihui.core.context.MyContext;
 import com.zhihui.core.exception.CoreException;
+import com.zhihui.core.util.MyStringUtils;
 
 @Controller
 @Path("/order")
@@ -63,6 +64,8 @@ public class Rest {
 
 			sign = headers.getRequestHeader("Sign") == null ? "" : headers.getRequestHeader("Sign").get(0);
 			contentType = headers.getRequestHeader("Content-Type") == null ? (headers.getRequestHeader("Content-type") == null ? "" : headers.getRequestHeader("Content-type").get(0)) : headers.getRequestHeader("Content-Type").get(0);
+			if (MyStringUtils.isEmpty(messageBody))
+				throw new ApiNoMethodException("messageBody is empty.");
 			// extract the parameter:method, do you have any other good ideas?
 			if (contentType.equalsIgnoreCase(MediaType.APPLICATION_XML)) {
 				Pattern pattern = Pattern.compile("<\\s*method\\s*>([^\\<\\>]+)<\\s*/method\\s*>");
@@ -79,8 +82,6 @@ public class Rest {
 					break;
 				}
 			} else
-				throw new ApiNoMethodException("no such thethod.");
-			if (method == null)
 				throw new ApiNoMethodException("no such thethod.");
 
 			// transform the exception
