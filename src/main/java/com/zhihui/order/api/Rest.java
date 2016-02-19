@@ -80,6 +80,8 @@ public class Rest {
 				}
 			} else
 				throw new ApiNoMethodException("no such thethod.");
+			if (method == null)
+				throw new ApiNoMethodException("no such thethod.");
 
 			// transform the exception
 			try {
